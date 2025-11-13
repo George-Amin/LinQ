@@ -1,6 +1,7 @@
 ﻿using LinqForCSharpDevelopers;
 using System;
 using System.ComponentModel.DataAnnotations;
+using System.Drawing;
 using System.Reflection;
 
 namespace LinQ
@@ -58,18 +59,36 @@ namespace LinQ
 
 
             #region FirstOrDefault()
-            //var Result = vehicles.FirstOrDefault(c => c.Make == "Fiat" );
-            //int[] x = { };
-            //var Result = x.FirstOrDefault( 1000);
-            //Console.WriteLine(Result);
-            //var 
-            //var result = vehicles.FirstOrDefault(c => c.Make == "Fiat");
-            #endregion
+            //var Result = vehicles.FirstOrDefault(c => c.Make == "Fiat");
+            //int[] x = [];
+            //var Result = x.FirstOrDefault();
+            //Console.WriteLine(Result); // default value of int is 0
+
+            //vehicles = [];
+            //Car defaultCar = new Car(
+            //    0,
+            //    "Default",
+            //     "Default",
+            //    0,
+            //     "Default",
+            //     "Default",
+            //     0);
+            //// default car object
+            //var result = vehicles.FirstOrDefault(c=>c.Id == 1000, defaultCar); // with condition and default value
 
             #endregion
 
 
-            //CarRepository.PrintCars([Result]);
+
+            #endregion
+
+            #region Last() - LastOrDefault() .07
+            #region Last()
+            //var result = vehicles.Last();
+            //var result = vehicles.Last(car=>car.Color == "Red"); 
+            #endregion
+            #endregion
+            //CarRepository.PrintCars([result]);
 
         }
     }
