@@ -11,6 +11,15 @@ namespace LinQ
         static void Main(string[] args)
         {
             var vehicles = CarRepository.GetCars();
+            var defaultCar = new Car(
+                Id: 00,
+                Make: "Default",
+                Model: "Default",
+                ManufactureYear: 00,
+                VIN: "00",
+                Color: "color",
+                MaxSpeed: 000
+                );
             #region Where
             //static bool IsFordAndGT(Car _car)
             //{
@@ -87,8 +96,12 @@ namespace LinQ
             //var result = vehicles.Last();
             //var result = vehicles.Last(car=>car.Color == "Red"); 
             #endregion
+            #region LastOrDefault()
+
+            //var result = vehicles.LastOrDefault(c => c.Make == "George" || c.Make == "Ford", defaultCar);
             #endregion
-            //CarRepository.PrintCars([result]);
+            #endregion
+            CarRepository.PrintCars([result]);
 
         }
     }
