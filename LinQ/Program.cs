@@ -11,6 +11,7 @@ namespace LinQ
         static void Main(string[] args)
         {
             var vehicles = CarRepository.GetCars();
+
             var defaultCar = new Car(
                 Id: 00,
                 Make: "Default",
@@ -101,7 +102,54 @@ namespace LinQ
             //var result = vehicles.LastOrDefault(c => c.Make == "George" || c.Make == "Ford", defaultCar);
             #endregion
             #endregion
-            CarRepository.PrintCars([result]);
+
+            #region Single()
+
+            //var result = vehicles.Single(); // will return exception cuz have more than element 
+            // Single work with just one element
+            // will throw Exception if have more then one element || null 
+
+            // string[] x = new string[] {"Name01","Name02" };
+            // Console.WriteLine(x.Single());
+            // will throw Exception if have more then one element || empty || null .
+
+
+
+            //var result = vehicles.Single(c => c.Make == "Ford"); // will return Exception cuz have more then Make have the same Condition
+            // Unhandled exception. System.InvalidOperationException: Sequence contains more than one matching element
+
+            //var result = vehicles.Single(c => c.VIN == "1FTEW1C89AK439924"); // VIN is a unique Value will return
+            #endregion
+
+            #region SingleOrDefault()
+            // var result = vehicles.SingleOrDefault(vehicle => vehicle.Make == "defaultCar", defaultCar);
+            // if the object is empty will return the default value 
+
+            #endregion
+
+            // link for all return datatypes :
+            // https://learn.microsoft.com/en-us/dotnet/csharp/linq/get-started/introduction-to-linq-queries
+
+            #region Data Ordering
+
+            //var result = from car in vehicles
+            //             orderby car.MaxSpeed /* descending */
+            //             select car;
+            //var result = vehicles.OrderBy( x => x.MaxSpeed ).ToList();
+
+            // overload
+
+            var result = vehicles.Order(new CarCustemIComparer());
+            //int[] nums = { 10, 2, 3 };
+            //var result = nums.Order();
+            //foreach (var item in result)
+            //{
+            //    Console.WriteLine(item);
+            //}
+
+            #endregion
+
+            CarRepository.PrintCars(result);
 
         }
     }
